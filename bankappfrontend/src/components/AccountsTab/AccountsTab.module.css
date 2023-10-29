@@ -1,0 +1,17 @@
+.button {
+  background-color: #941c2f;
+
+  &:hover {
+    background-color: #941c2f;
+
+    &:active {
+      background-color: #941c2f;
+    }
+  }
+}
+
+.noAccountsPanel {
+  background-color: white;
+  padding: 50px;
+  margin-bottom: 25px;
+}

@@ -1,0 +1,37 @@
+.tab {
+  flex-grow: 1;
+  background-color: white;
+  cursor: pointer;
+  color: black;
+  font-weight: 600;
+  box-sizing: border-box;
+}
+
+.tab > .navLink {
+  color: black;
+  transition: none;
+  transform: scale(1.1);
+  border: 0px;
+  &:hover {
+    color: #c897a3;
+    border: 0px;
+  }
+}
+
+.active {
+  box-sizing: border-box;
+  border-bottom: 3px solid #941c2f;
+  &:hover {
+    color: #941c2f;
+    border-bottom: 3px solid #941c2f;
+  }
+
+  & > .navLink {
+    color: #941c2f;
+    transition: none;
+
+    &:hover {
+      color: #941c2f;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+.accountsTableDesktop {
+  border-radius: 3px;
+}
+
+.mobileListComponent {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.accountNumber {
+  cursor: default;
+}
+
+.balance {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.balanceTitle {
+  font-size: 11px;
+}
+
+.balanceFigure {
+  font-weight: bold;
+  font-size: 14px;
+}

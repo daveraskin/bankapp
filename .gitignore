@@ -1,0 +1,8 @@
+newenv/
+.env
+db.sqlite3
+
+bankappfrontend/build
+bankappfrontend/node_modules
+
+**/__pycache__
