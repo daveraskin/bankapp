@@ -4,5 +4,6 @@ db.sqlite3
 
 bankappfrontend/build
 bankappfrontend/node_modules
+bankappfrontend/.env
 
 **/__pycache__
