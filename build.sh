@@ -17,6 +17,3 @@ cd /opt/render/project/src
 
 ./venv/bin/poetry run python manage.py collectstatic --no-input
 ./venv/bin/poetry run python manage.py migrate
-
-cd bankappfrontend
-npm start
