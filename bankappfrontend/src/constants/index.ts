@@ -1,8 +1,4 @@
-import * as dotenv from 'dotenv';
-
-dotenv.config();
-
-const BASE_URL = process.env.BACKEND_URL;
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 export const API_URL = BASE_URL + 'api/users/';
 export const API_GET_TOKEN_URL = BASE_URL + 'api/token/';
