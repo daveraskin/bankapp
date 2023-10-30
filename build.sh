@@ -13,7 +13,7 @@ echo "Installing new/better version of poetry into our virtual env..."
 
 echo "Installing our (non-dev) packages..."
 cd /opt/render/project/src
-./venv/bin/poetry install --without dev
+./venv/bin/poetry install
 
 ./venv/bin/poetry run python manage.py collectstatic --no-input
 ./venv/bin/poetry run python manage.py migrate
