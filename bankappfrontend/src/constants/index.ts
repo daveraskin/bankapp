@@ -1,4 +1,9 @@
-const BASE_URL = 'http://localhost:8000/'
+import * as dotenv from 'dotenv';
+
+dotenv.config();
+
+const BASE_URL = process.env.BACKEND_URL;
+
 export const API_URL = BASE_URL + 'api/users/';
 export const API_GET_TOKEN_URL = BASE_URL + 'api/token/';
 export const API_REFRESH_TOKEN_URL = BASE_URL + 'api/token/refresh/';

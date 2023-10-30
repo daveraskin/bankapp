@@ -32,7 +32,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['daveraskin-bankapp.onrender.com']
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
@@ -114,10 +114,12 @@ SIMPLE_JWT = {
 ROOT_URLCONF = 'bankapp.urls'
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'https://daveraskin-bankapp-frontend.onrender.com'
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'https://*.127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'https://*.127.0.0.1',
+                        'https://daveraskin-bankapp-frontend.onrender.com']
 
 CSRF_COOKIE_NAME = 'csrftoken'
 CSRF_COOKIE_HTTPONLY = True
