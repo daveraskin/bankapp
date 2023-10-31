@@ -18,7 +18,6 @@ def get_user_id_from_request(request):
     return user_id
 
 
-@api_view(["POST"])
 def create_user(request):
     data = json.loads(request.body)
 

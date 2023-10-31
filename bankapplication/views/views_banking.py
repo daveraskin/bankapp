@@ -8,7 +8,6 @@ from ..models import Account
 from ..serializers import *
 
 
-@api_view(["POST"])
 def create_account(request):
     user_id = get_user_id_from_request(request)
     user = User.objects.get(id=user_id)

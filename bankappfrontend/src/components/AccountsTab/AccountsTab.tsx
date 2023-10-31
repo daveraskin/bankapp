@@ -1,12 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
-import AuthContext, {
-  getCSRFToken,
-  parseErrorMessage,
-} from "../../context/AuthContext";
+import React from "react";
 import { AccountType } from "./CreateAccount/CreateAccountForm";
-import axios from "axios";
 import styles from "./AccountsTab.module.css";
-import { API_GET_USER_ACCOUNTS_URL } from "../../constants";
 import AccountsTable from "./AccountsTable/AccountsTable";
 import { Col, Row } from "reactstrap";
 import CreateAccountModal from "./CreateAccount/CreateAccountModal";

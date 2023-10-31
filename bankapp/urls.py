@@ -35,5 +35,4 @@ urlpatterns = [
     path('api/transfer_funds/', views_banking.transfer_funds),
     path('api/money_tree/', views_banking.money_tree),
     path('', TemplateView.as_view(template_name='index.html')),
-    # path('', include('render.urls')),
 ]

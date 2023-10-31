@@ -1,7 +1,7 @@
 import React from "react";
 import { Account } from "../AccountsTab";
 import { makeAccountNumberPrivate } from "../TransferFunds/TransferFundsForm";
-import { List, ListGroup, ListGroupItem } from "reactstrap";
+import { ListGroup, ListGroupItem } from "reactstrap";
 import styles from "./AccountsTable.module.css";
 import { formatDollarValue } from "../../../utils/HelperFunctions";
 

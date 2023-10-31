@@ -4,10 +4,7 @@ import { Col, Container, Row, TabContent, TabPane } from "reactstrap";
 import axios from "axios";
 import { API_GET_USER_ACCOUNTS_URL, API_GET_USER_URL } from "../constants";
 import UserInfo from "../components/UserInfo";
-import AuthContext, {
-  getCSRFToken,
-  parseErrorMessage,
-} from "../context/AuthContext";
+import AuthContext, { parseErrorMessage } from "../context/AuthContext";
 import AccountsTab, { Account } from "../components/AccountsTab/AccountsTab";
 import NavigationTabs from "../components/NavigationTabs/NavigationTabs";
 import MoneyTree from "../components/MoneyTreeTab/MoneyTree";
@@ -43,7 +40,6 @@ const Home = () => {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${authTokens?.access}`,
-          "X-CSRFToken": getCSRFToken(),
         },
       });
       const data = response.data.accounts;
@@ -67,7 +63,6 @@ const Home = () => {
     try {
       const response = await axios.get(API_GET_USER_URL, {
         headers: {
-          "X-CSRFToken": getCSRFToken(),
           Authorization: `Bearer ${authTokens?.access}`,
         },
       });

@@ -1,7 +1,7 @@
 import React, { FormEvent, useContext, useState } from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import styles from "../AccountsTab.module.css";
-import AuthContext, { getCSRFToken } from "../../../context/AuthContext";
+import AuthContext from "../../../context/AuthContext";
 import axios from "axios";
 import { API_CREATE_ACCOUNT_URL } from "../../../constants";
 
@@ -49,7 +49,6 @@ const CreateAccountForm = ({
       headers: {
         Authorization: `Bearer ${authTokens?.access}`,
         "Content-Type": "application/json",
-        "X-CSRFToken": getCSRFToken(),
       },
     });
     setAccountInfo(defaultAccountInfo);

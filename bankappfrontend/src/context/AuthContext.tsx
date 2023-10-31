@@ -24,13 +24,6 @@ interface AuthContextData {
   ) => Promise<AxiosResponse<any, any> | Error>;
 }
 
-export const getCSRFToken = () => {
-  return document.cookie
-    .split("; ")
-    .find((cookie) => cookie.startsWith("csrftoken="))
-    ?.split("=")[1];
-};
-
 export const parseErrorMessage = (error: any) => {
   if (error instanceof Error) {
     return error.message;
@@ -113,7 +106,6 @@ export const AuthProvider = ({ children }: { children: ReactElement }) => {
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
-          "X-CSRFToken": getCSRFToken(),
         },
       });
 
@@ -171,7 +163,6 @@ export const AuthProvider = ({ children }: { children: ReactElement }) => {
         headers: {
           Authorization: `Bearer ${authTokens}`,
           "Content-Type": "application/json",
-          "X-CSRFToken": getCSRFToken(),
         },
       });
 
