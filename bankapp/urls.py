@@ -29,7 +29,7 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/get_csrf_token/', views_auth.get_csrf_token),
     path('api/create_user/', views_auth.create_user),
-    path('api/create_account/', views_auth.create_account),
+    path('api/create_account/', views_banking.create_account),
     path('api/get_user/', views.get_user),
     path('api/get_user_accounts', views.get_user_accounts),
     path('api/transfer_funds/', views_banking.transfer_funds),

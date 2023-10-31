@@ -32,7 +32,8 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ['daveraskin-bankapp.onrender.com']
+ALLOWED_HOSTS = ['*', 'localhost:8000/',
+                 'daveraskin-bankapp.onrender.com/']
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
@@ -41,6 +42,7 @@ if RENDER_EXTERNAL_HOSTNAME:
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt',
     'render.apps.RenderConfig',
@@ -51,18 +53,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bankapplication',
-    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 REST_FRAMEWORK = {
@@ -113,21 +113,25 @@ SIMPLE_JWT = {
 
 ROOT_URLCONF = 'bankapp.urls'
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'https://daveraskin-bankapp-frontend.onrender.com'
-]
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'https://*.127.0.0.1',
-                        'https://daveraskin-bankapp-frontend.onrender.com']
+# CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'https://*.127.0.0.1',
+# 'https://daveraskin-bankapp-frontend.onrender.com']
 
-CSRF_COOKIE_NAME = 'csrftoken'
-CSRF_COOKIE_HTTPONLY = True
+# CSRF_COOKIE_NAME = 'csrftoken'
+CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_SAMESITE = None
+# CSRF_COOKIE_HTTPONLY = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = [
     'Authorization',
     'X-CSRFToken',
     'Content-Type'
+]
+CORS_ALLOWED_ORIGINS = [
+    'http://127.0.0.1:3000',
+    'http://localhost:3000',
+    'http://localhost',
+    'https://daveraskin-bankapp-frontend.onrender.com'
 ]
 
 TEMPLATES = [
