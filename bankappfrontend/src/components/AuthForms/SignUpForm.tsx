@@ -79,104 +79,119 @@ const SignUpForm = () => {
 
   return (
     <React.Fragment>
+      <h2 className={styles.createAccountHeader}>Create an Account</h2>
       <Form onSubmit={onSubmitSignUp}>
-        <FormGroup>
-          <Label for="username">Username</Label>
-          <Input
-            value={signUpFormData.username}
-            onChange={onChange}
-            id="username"
-            name="username"
-            type="text"
-          ></Input>
-          {signUpFormData.username !== "" &&
-            !validateUsername(signUpFormData.username) && (
-              <p className={styles.validationError}>
-                Invalid username. Must be between 4 and 255 characters.
-              </p>
-            )}
-        </FormGroup>
-        <FormGroup>
-          <Label for="pass1">Password</Label>
-          <Input
-            value={signUpFormData.pass1}
-            onChange={onChange}
-            id="pass1"
-            name="pass1"
-            type="text"
-          ></Input>
-          {signUpFormData.pass1 !== "" &&
-            !validatePassword(signUpFormData.pass1) && (
-              <p className={styles.validationError}>
-                Password must be at least 8 characters.
-              </p>
-            )}
-        </FormGroup>
-        <FormGroup>
-          <Label for="pass2">Re-enter Password</Label>
-          <Input
-            value={signUpFormData.pass2}
-            onChange={onChange}
-            id="pass2"
-            name="pass2"
-            type="text"
-          ></Input>
-          {signUpFormData.pass2 !== "" &&
-            validatePassword(signUpFormData.pass1) &&
-            !validatePassword(signUpFormData.pass1, signUpFormData.pass2) && (
-              <p className={styles.validationError}>Passwords must match.</p>
-            )}
-        </FormGroup>
-        <FormGroup>
-          <Label for="email">E-mail</Label>
-          <Input
-            value={signUpFormData.email}
-            onChange={onChange}
-            id="email"
-            name="email"
-            type="email"
-          ></Input>
-          {signUpFormData.email !== "" &&
-            !validateEmail(signUpFormData.email) && (
-              <p className={styles.validationError}>
-                Please enter a valid E-mail.
-              </p>
-            )}
-        </FormGroup>
-        <FormGroup>
-          <Label for="firstName">First Name</Label>
-          <Input
-            value={signUpFormData.firstName}
-            onChange={onChange}
-            id="firstName"
-            name="firstName"
-            type="text"
-          ></Input>
-          {signUpFormData.firstName !== "" &&
-            !validateName(signUpFormData.firstName) && (
-              <p className={styles.validationError}>
-                Names must be at least two characters. Only alphabetical
-                characters are allowed.
-              </p>
-            )}
-        </FormGroup>
-        <FormGroup>
-          <Label for="lastName">Last Name</Label>
-          <Input
-            value={signUpFormData.lastName}
-            onChange={onChange}
-            id="lastName"
-            name="lastName"
-            type="text"
-          ></Input>
-          {signUpFormData.lastName !== "" &&
-            !validateName(signUpFormData.lastName) && (
-              <p className={styles.validationError}>
-                Names must be at least two characters. Only alphabetical
-                characters are allowed.
-              </p>
-            )}
-        </FormGroup>
+        <div className={styles.leftAlignedForm}>
+          <FormGroup className={styles.formGroup}>
+            <Label className={styles.inputLabel} for="username">
+              Username:
+            </Label>
+            <Input
+              value={signUpFormData.username}
+              onChange={onChange}
+              id="username"
+              name="username"
+              type="text"
+            ></Input>
+            {signUpFormData.username !== "" &&
+              !validateUsername(signUpFormData.username) && (
+                <p className={styles.validationError}>
+                  Invalid username. Must be between 4 and 255 characters.
+                </p>
+              )}
+          </FormGroup>
+          <FormGroup className={styles.formGroup}>
+            <Label className={styles.inputLabel} for="pass1">
+              Password:
+            </Label>
+            <Input
+              value={signUpFormData.pass1}
+              onChange={onChange}
+              id="pass1"
+              name="pass1"
+              type="text"
+            ></Input>
+            {signUpFormData.pass1 !== "" &&
+              !validatePassword(signUpFormData.pass1) && (
+                <p className={styles.validationError}>
+                  Password must be at least 8 characters.
+                </p>
+              )}
+          </FormGroup>
+          <FormGroup className={styles.formGroup}>
+            <Label className={styles.inputLabel} for="pass2">
+              Re-enter Password:
+            </Label>
+            <Input
+              value={signUpFormData.pass2}
+              onChange={onChange}
+              id="pass2"
+              name="pass2"
+              type="text"
+            ></Input>
+            {signUpFormData.pass2 !== "" &&
+              validatePassword(signUpFormData.pass1) &&
+              !validatePassword(signUpFormData.pass1, signUpFormData.pass2) && (
+                <p className={styles.validationError}>Passwords must match.</p>
+              )}
+          </FormGroup>
+          <FormGroup className={styles.formGroup}>
+            <Label className={styles.inputLabel} for="email">
+              E-mail:
+            </Label>
+            <Input
+              value={signUpFormData.email}
+              onChange={onChange}
+              id="email"
+              name="email"
+              type="email"
+            ></Input>
+            {signUpFormData.email !== "" &&
+              !validateEmail(signUpFormData.email) && (
+                <p className={styles.validationError}>
+                  Please enter a valid E-mail.
+                </p>
+              )}
+          </FormGroup>
+          <FormGroup className={styles.formGroup}>
+            <Label className={styles.inputLabel} for="firstName">
+              First Name:
+            </Label>
+            <Input
+              value={signUpFormData.firstName}
+              onChange={onChange}
+              id="firstName"
+              name="firstName"
+              type="text"
+            ></Input>
+            {signUpFormData.firstName !== "" &&
+              !validateName(signUpFormData.firstName) && (
+                <p className={styles.validationError}>
+                  Names must be at least two characters. Only alphabetical
+                  characters are allowed.
+                </p>
+              )}
+          </FormGroup>
+          <FormGroup className={styles.formGroup}>
+            <Label className={styles.inputLabel} for="lastName">
+              Last Name:
+            </Label>
+            <Input
+              value={signUpFormData.lastName}
+              onChange={onChange}
+              id="lastName"
+              name="lastName"
+              type="text"
+            ></Input>
+            {signUpFormData.lastName !== "" &&
+              !validateName(signUpFormData.lastName) && (
+                <p className={styles.validationError}>
+                  Names must be at least two characters. Only alphabetical
+                  characters are allowed.
+                </p>
+              )}
+          </FormGroup>
+        </div>
         <Button type="submit" disabled={!isFormDataValid}>
           Submit
         </Button>

@@ -9,17 +9,19 @@ const Header = () => {
   const navigate = useNavigate();
 
   const login = (
-    <div>
+    <div className={styles.loginOrSignup}>
       {" "}
       <span
         onClick={() =>
           navigate("/auth", { state: { action: AuthPageActions.LOG_IN } })
         }
+        className={styles.authLink}
       >
         Log In
       </span>{" "}
       or{" "}
       <span
+        className={styles.authLink}
         onClick={() =>
           navigate("/auth", { state: { action: AuthPageActions.SIGN_UP } })
         }

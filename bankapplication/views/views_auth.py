@@ -1,4 +1,5 @@
 import json
+import time
 from django.http import JsonResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -20,7 +21,7 @@ def get_user_id_from_request(request):
 
 def create_user(request):
     data = json.loads(request.body)
-
+    time.sleep(3)
     username = data.get('username')
     password = data.get('pass1')
     email = data.get('email')
