@@ -3,6 +3,7 @@ import LoginForm from "../components/AuthForms/LoginForm";
 import { useLocation } from "react-router-dom";
 import { AuthPageActions } from "../constants";
 import SignUpForm from "../components/AuthForms/SignUpForm";
+import { Col, Container, Row } from "reactstrap";
 
 const Auth = () => {
   const location = useLocation();
@@ -11,8 +12,8 @@ const Auth = () => {
   const authForm =
     state?.action === AuthPageActions.SIGN_UP ? <SignUpForm /> : <LoginForm />;
   return (
-    <div className="container">
-      <div
+    <Container>
+      <Row
         className="row"
         style={{
           paddingTop: "20px",
@@ -21,9 +22,11 @@ const Auth = () => {
           flexGrow: 1,
         }}
       >
-        <div className="col-6">{authForm}</div>
-      </div>
-    </div>
+        <Col xs="12" sm="12" md="8" lg="6">
+          {authForm}
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
