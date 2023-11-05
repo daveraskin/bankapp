@@ -39,3 +39,9 @@
 .inputLabel {
   padding-left: 5px;
 }
+
+.spinnerButton {
+  min-width: 72px;
+  min-height: 38px;
+  max-height: 38px;
+}

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { FormGroup, Label, Input, Form, Button } from "reactstrap";
+import { FormGroup, Label, Input, Form, Button, Spinner } from "reactstrap";
 import styles from "./AuthForms.module.css";
 import AuthContext from "../../context/AuthContext";
 
@@ -43,10 +43,14 @@ const SignUpForm = () => {
     lastName: "",
   });
   const [isFormDataValid, setIsFormDataValid] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const { createUser } = useContext(AuthContext);
   const onSubmitSignUp = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    createUser(signUpFormData);
+    setIsLoading(true);
+    await createUser(signUpFormData);
+    setIsLoading(false);
   };
 
   const validateFormData = () => {
@@ -192,8 +196,12 @@ const SignUpForm = () => {
               )}
           </FormGroup>
         </div>
-        <Button type="submit" disabled={!isFormDataValid}>
-          Submit
+        <Button
+          className={styles.spinnerButton}
+          type="submit"
+          disabled={!isFormDataValid || isLoading}
+        >
+          {isLoading ? <Spinner size="sm" /> : "Submit"}
         </Button>
       </Form>
     </React.Fragment>
