@@ -9,7 +9,7 @@ const RequireAuth = ({
   redirectTo: string;
   children: ReactElement;
 }) => {
-  const { user, authTokens } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   return (
     <React.Fragment>
       {user ? children : <Navigate to={redirectTo} />}
