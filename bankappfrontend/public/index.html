@@ -31,7 +31,7 @@
       style="
         width: 100vw;
         height: 100vh;
-        display: flex;
+        display: none;
         justify-content: center;
         align-items: center;
         flex-direction: column;
@@ -53,8 +53,9 @@
 
         const checkInterval = setInterval(() => {
           const app = document.getElementById("App");
-
-          if (app && elementToHide) {
+          if (attempts === 2) {
+            elementToHide.style.display = "flex";
+          } else if (app && elementToHide) {
             clearInterval(checkInterval);
             elementToHide.style.display = "none";
           } else if (attempts >= maxAttempts) {
