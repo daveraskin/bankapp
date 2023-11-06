@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <div className="App">
+        <div className="App" id="App">
           <Header />
           <Routes>
             <Route
