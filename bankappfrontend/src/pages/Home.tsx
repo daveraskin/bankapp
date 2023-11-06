@@ -10,9 +10,9 @@ import NavigationTabs from "../components/NavigationTabs/NavigationTabs";
 import MoneyTree from "../components/MoneyTreeTab/MoneyTree";
 
 export enum TabName {
-  ACCOUNTS = "ACCOUNTS",
+  ACCOUNTS_SUMMARY = "ACCOUNTS_SUMMARY",
   MONEY_TREE = "MONEY_TREE",
-  CREDIT_SCORE = "CREDIT_SCORE",
+  TRANSFERS = "TRANSFERS",
 }
 
 export interface User {
@@ -26,7 +26,9 @@ const Home = () => {
   const { authTokens, logoutUser } = useContext(AuthContext);
   const [userData, setUserData] = useState<User | null>(null);
   const [accountsData, setAccountsData] = useState<Account[] | null>(null);
-  const [currentTab, setCurrentTab] = useState<TabName>(TabName.ACCOUNTS);
+  const [currentTab, setCurrentTab] = useState<TabName>(
+    TabName.ACCOUNTS_SUMMARY
+  );
 
   useEffect(() => {
     fetchUserInfo();
@@ -83,7 +85,7 @@ const Home = () => {
             setCurrentTab={setCurrentTab}
           />
           <TabContent activeTab={currentTab}>
-            <TabPane tabId={TabName.ACCOUNTS}>
+            <TabPane tabId={TabName.ACCOUNTS_SUMMARY}>
               <AccountsTab
                 fetchAccountsData={fetchAccountsData}
                 accountsData={accountsData}
@@ -96,7 +98,7 @@ const Home = () => {
                 accountsData={accountsData}
               />
             </TabPane>
-            <TabPane tabId={TabName.CREDIT_SCORE}>Credit Score!</TabPane>
+            <TabPane tabId={TabName.TRANSFERS}>Credit Score!</TabPane>
           </TabContent>
         </Col>
       </Row>

@@ -12,6 +12,7 @@ import AuthContext from "../../../context/AuthContext";
 import { Account } from "../AccountsTab";
 import DollarInput from "../../../utils/DollarInput";
 import { formatDollarValue } from "../../../utils/HelperFunctions";
+import AccountSelector from "./AccountSelector";
 
 interface TransferFormInfo {
   // transferFrom and transferTo will either be a string representing
@@ -128,6 +129,10 @@ const TransferFundsForm = ({
 
   return (
     <Form onSubmit={onSubmitTransferForm}>
+      <FormGroup>
+        <Label>Transfer To</Label>
+        <AccountSelector accountsData={accountsData} />
+      </FormGroup>
       <FormGroup>
         <Label>Transfer To</Label>
         <Input

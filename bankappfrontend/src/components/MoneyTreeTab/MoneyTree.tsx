@@ -52,7 +52,7 @@ const MoneyTree = ({
       setFormData(defaultFormData);
       setSelectedAccount("");
       fetchAccountsData();
-      setCurrentTab(TabName.ACCOUNTS);
+      setCurrentTab(TabName.ACCOUNTS_SUMMARY);
     }
   };
 

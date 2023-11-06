@@ -15,3 +15,23 @@
   padding: 50px;
   margin-bottom: 25px;
 }
+
+.mobileListComponent {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+.balance {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.balanceTitle {
+  font-size: 11px;
+}
+
+.balanceFigure {
+  font-weight: bold;
+  font-size: 14px;
+}

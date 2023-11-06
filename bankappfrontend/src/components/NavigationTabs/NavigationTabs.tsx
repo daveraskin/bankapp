@@ -15,14 +15,26 @@ const NavigationTabs = ({
     <Nav className={styles.navTabs} tabs>
       <NavItem
         className={
-          currentTab === TabName.ACCOUNTS ? activeTabStyle : styles.tab
+          currentTab === TabName.ACCOUNTS_SUMMARY ? activeTabStyle : styles.tab
         }
       >
         <NavLink
           className={styles.navLink}
-          onClick={() => setCurrentTab(TabName.ACCOUNTS)}
+          onClick={() => setCurrentTab(TabName.ACCOUNTS_SUMMARY)}
         >
-          Accounts
+          Accounts Summary
+        </NavLink>
+      </NavItem>
+      <NavItem
+        className={
+          currentTab === TabName.TRANSFERS ? activeTabStyle : styles.tab
+        }
+      >
+        <NavLink
+          className={styles.navLink}
+          onClick={() => setCurrentTab(TabName.TRANSFERS)}
+        >
+          Transfers
         </NavLink>
       </NavItem>
       <NavItem
@@ -37,18 +49,6 @@ const NavigationTabs = ({
           Money Tree
         </NavLink>
       </NavItem>
-      {/* <NavItem
-        className={
-          currentTab === TabName.CREDIT_SCORE ? activeTabStyle : styles.tab
-        }
-      >
-        <NavLink
-          className={styles.navLink}
-          onClick={() => setCurrentTab(TabName.CREDIT_SCORE)}
-        >
-          Credit Score
-        </NavLink>
-      </NavItem> */}
     </Nav>
   );
 };

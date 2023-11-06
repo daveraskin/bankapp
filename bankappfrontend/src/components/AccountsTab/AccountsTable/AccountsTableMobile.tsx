@@ -4,35 +4,20 @@ import { makeAccountNumberPrivate } from "../TransferFunds/TransferFundsForm";
 import { ListGroup, ListGroupItem } from "reactstrap";
 import styles from "./AccountsTable.module.css";
 import { formatDollarValue } from "../../../utils/HelperFunctions";
+import AccountListItem from "../AccountListItem";
 
 const AccountsTableMobile = ({
   accountsData,
 }: {
   accountsData: Account[] | null;
 }) => {
-  const MobileListComponent = ({ accountData }: { accountData: Account }) => {
-    return (
-      <div className={styles.mobileListComponent}>
-        <div>
-          {makeAccountNumberPrivate(accountData.account_number, true)} *{" "}
-          {accountData.name}
-        </div>
-        <div className={styles.balance}>
-          <div className={styles.balanceTitle}>Balance</div>
-          <div className={styles.balanceFigure}>
-            {formatDollarValue(accountData.balance)}
-          </div>
-        </div>
-      </div>
-    );
-  };
   return (
     <React.Fragment>
       <ListGroup type="unstyled">
         {accountsData?.map((accountData) => {
           return (
             <ListGroupItem>
-              <MobileListComponent
+              <AccountListItem
                 key={accountData.account_number}
                 accountData={accountData}
               />
