@@ -4,7 +4,7 @@ import styles from "./AccountsTab.module.css";
 import AccountsTable from "./AccountsTable/AccountsTable";
 import { Col, Row } from "reactstrap";
 import CreateAccountModal from "./CreateAccount/CreateAccountModal";
-import TransferFundsModal from "./TransferFunds/TransferFundsModal";
+import TransferFundsModal from "../TransfersTab/AccountSelectorModal";
 
 export interface Account {
   name: string;
@@ -41,13 +41,6 @@ const AccountsTab = ({
       <Row>
         <Col>
           <CreateAccountModal fetchAccountsData={fetchAccountsData} />
-        </Col>
-        <Col>
-          <TransferFundsModal
-            disabled={isTransferFundsModalDisabled}
-            accountsData={accountsData}
-            fetchAccountsData={fetchAccountsData}
-          />
         </Col>
       </Row>
     </React.Fragment>

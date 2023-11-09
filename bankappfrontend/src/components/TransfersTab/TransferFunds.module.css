@@ -1,0 +1,45 @@
+.transferFundsContainer {
+  background-color: white;
+  padding: 20px;
+}
+
+.leftAlignFormGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.transferFundsFormLabel {
+  font-weight: 600;
+}
+
+.transferFundsTitle {
+  padding-bottom: 20px;
+}
+
+.noSelectionDiv {
+  width: 100%;
+  border: 1px solid #bbbaba;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  height: 65px;
+  cursor: pointer;
+}
+
+.selectionDiv {
+  border: 1px solid #bbbaba;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.accountListItem {
+  cursor: pointer;
+}
+
+.disabledAccountListItem {
+  cursor: default;
+}

@@ -6,7 +6,6 @@ import Home from "./pages/Home";
 import Auth from "./pages/Auth";
 import RequireAuth from "./utils/RequireAuth";
 import { AuthProvider } from "./context/AuthContext";
-import SignUpForm from "./components/AuthForms/SignUpForm";
 
 function App() {
   return (

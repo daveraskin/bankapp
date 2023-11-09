@@ -1,24 +1,12 @@
-import React, {
-  FormEvent,
-  Fragment,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import React, { FormEvent, useContext, useState } from "react";
 import { Account } from "../AccountsTab/AccountsTab";
 import styles from "./MoneyTree.module.css";
-import { Button, Form, FormGroup, Input, Label } from "reactstrap";
-import {
-  getBalance,
-  makeAccountNumberPrivate,
-} from "../AccountsTab/TransferFunds/TransferFundsForm";
-import axios from "axios";
+import { Button, Col, Form, FormGroup, Label, Row } from "reactstrap";
 import DollarInput from "../../utils/DollarInput";
 import AuthContext from "../../context/AuthContext";
 import { API_MONEY_TREE_URL } from "../../constants";
-import { formatDollarValue } from "../../utils/HelperFunctions";
-import { useNavigate } from "react-router-dom";
 import { TabName } from "../../pages/Home";
+import AccountSelector from "../TransfersTab/AccountSelector";
 
 interface MoneyTreeFormData {
   account_number: string;
@@ -41,81 +29,50 @@ const MoneyTree = ({
 }) => {
   const { postRequest } = useContext(AuthContext);
   const [selectedAccount, setSelectedAccount] = useState("");
-  const [formData, setFormData] = useState<MoneyTreeFormData>(defaultFormData);
+  const [amount, setAmount] = useState(0);
 
   const onSubmitMoneyTreeForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const response = await postRequest(API_MONEY_TREE_URL, formData);
+    const response = await postRequest(API_MONEY_TREE_URL, {
+      account_number: selectedAccount,
+      amount: amount,
+    });
     if (response instanceof Error) {
       alert("uh oh baby");
     } else if (response.status === 200) {
-      setFormData(defaultFormData);
+      setAmount(0);
       setSelectedAccount("");
       fetchAccountsData();
       setCurrentTab(TabName.ACCOUNTS_SUMMARY);
     }
   };
 
-  const onChangeAccountSelection = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setFormData({
-      ...formData,
-      account_number: event.target.value,
-    });
-    setSelectedAccount(event.target.value);
-  };
   return (
     <div className={styles.moneyTreeContainer}>
-      <h3 className={styles.moneyTreeTitle}>Money Does Grow On Trees!</h3>
-      <Form onSubmit={onSubmitMoneyTreeForm}>
-        <FormGroup>
-          <Label>Select an account to add money to!</Label>
-          <Input
-            name="account_name"
-            type="select"
-            onChange={onChangeAccountSelection}
-          >
-            <option value={selectedAccount} selected disabled>
-              Select an account
-            </option>
-            {accountsData?.map((account) => {
-              return (
-                <option
-                  value={account.account_number}
-                  key={account.account_number}
-                >
-                  {account.name} &nbsp; | &nbsp;
-                  {makeAccountNumberPrivate(account.account_number)}
-                </option>
-              );
-            })}
-          </Input>
-          {formData.account_number !== "" && (
-            <Fragment>
-              <div>Current Balance</div>
-              <div>
-                {formatDollarValue(
-                  Number(getBalance(formData.account_number, accountsData))
-                )}
-              </div>
-            </Fragment>
-          )}
-        </FormGroup>
-        <FormGroup>
-          <Label>How much money?</Label>
-          &nbsp;&nbsp;
-          <DollarInput
-            setValue={setFormData}
-            currentValue={formData}
-            placeholder="e.g. 100.00"
-            attributeName="amount"
-          />
-        </FormGroup>
-        <Button disabled={selectedAccount === ""} type="submit">
-          Money Me!
-        </Button>
-      </Form>
+      <h3 className={styles.moneyTreeTitle}>The Money Tree</h3>
+      <Row>
+        <Col lg="4" xs="0"></Col>
+        <Col lg="4" xs="12">
+          <Form onSubmit={onSubmitMoneyTreeForm}>
+            <FormGroup className={styles.leftAlignFormGroup}>
+              <Label className={styles.moneyTreeFormLabel}>To Account</Label>
+              <AccountSelector
+                accountsData={accountsData}
+                setSelectedAccount={setSelectedAccount}
+                selectedAccount={selectedAccount}
+              />
+            </FormGroup>
+            <FormGroup className={styles.leftAlignFormGroup}>
+              <Label className={styles.moneyTreeFormLabel}>Amount</Label>
+              <DollarInput setCurrentValue={setAmount} currentValue={amount} />
+            </FormGroup>
+            <Button disabled={selectedAccount === ""} type="submit">
+              Money Me!
+            </Button>
+          </Form>
+        </Col>
+        <Col lg="4" xs="0"></Col>
+      </Row>
     </div>
   );
 };

@@ -2,3 +2,17 @@
   background-color: white;
   padding: 20px;
 }
+
+.moneyTreeTitle {
+  padding-bottom: 20px;
+}
+
+.leftAlignFormGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.moneyTreeFormLabel {
+  font-weight: 600;
+}

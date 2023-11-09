@@ -17,9 +17,29 @@
 }
 
 .mobileListComponent {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.mobileListComponentText {
   text-align: left;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+}
+
+.accountTypeBadge {
+  background-color: #941c2f;
+  height: 45px;
+  width: 45px;
+  color: white;
+  font-weight: 800;
+  text-align: center;
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .balance {
   display: flex;
@@ -34,4 +54,8 @@
 .balanceFigure {
   font-weight: bold;
   font-size: 14px;
+}
+
+.disabled {
+  color: #bababa;
 }

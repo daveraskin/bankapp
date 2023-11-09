@@ -32,14 +32,16 @@
         width: 100vw;
         height: 100vh;
         display: none;
+        padding: 20px;
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        text-align: center;
       "
     >
       <p>
-        Waiting for connection to server. Because I'm using a free, hobbyist
-        account on Render, this may take up to a minute.
+        Waiting for connection to server. Because this app runs on a free,
+        hobbyist account on Render, this may take up to a minute.
       </p>
       <p>Hope you're having a pretty nice day so far!</p>
     </div>
@@ -53,7 +55,7 @@
 
         const checkInterval = setInterval(() => {
           const app = document.getElementById("App");
-          if (attempts === 2) {
+          if (attempts === 1) {
             elementToHide.style.display = "flex";
           } else if (app && elementToHide) {
             clearInterval(checkInterval);
@@ -69,5 +71,9 @@
 
       checkForElement();
     </script>
+    <script
+      src="https://kit.fontawesome.com/fdec369758.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

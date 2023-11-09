@@ -8,6 +8,7 @@ import AuthContext, { parseErrorMessage } from "../context/AuthContext";
 import AccountsTab, { Account } from "../components/AccountsTab/AccountsTab";
 import NavigationTabs from "../components/NavigationTabs/NavigationTabs";
 import MoneyTree from "../components/MoneyTreeTab/MoneyTree";
+import TransferFunds from "../components/TransfersTab/TransferFunds";
 
 export enum TabName {
   ACCOUNTS_SUMMARY = "ACCOUNTS_SUMMARY",
@@ -29,6 +30,11 @@ const Home = () => {
   const [currentTab, setCurrentTab] = useState<TabName>(
     TabName.ACCOUNTS_SUMMARY
   );
+
+  const hasNoAccounts: boolean =
+    accountsData === null || accountsData.length === 0;
+  const isTransferFundsModalDisabled =
+    hasNoAccounts || (accountsData !== null && accountsData?.length <= 1);
 
   useEffect(() => {
     fetchUserInfo();
@@ -98,7 +104,13 @@ const Home = () => {
                 accountsData={accountsData}
               />
             </TabPane>
-            <TabPane tabId={TabName.TRANSFERS}>Credit Score!</TabPane>
+            <TabPane tabId={TabName.TRANSFERS}>
+              <TransferFunds
+                accountsData={accountsData}
+                fetchAccountsData={fetchAccountsData}
+                setCurrentTab={setCurrentTab}
+              />
+            </TabPane>
           </TabContent>
         </Col>
       </Row>
