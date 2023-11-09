@@ -4,7 +4,7 @@ import { Input } from "reactstrap";
 const numOnlyRegex = /^[0-9\b]+$/;
 
 const parseFloat = (float: number) => {
-  const floatString = float.toString();
+  const floatString = float.toFixed(2).toString();
   if (floatString.indexOf(".") !== -1) {
     return Number(floatString.slice(0, floatString.indexOf(".") + 2 + 1));
   } else {
@@ -25,6 +25,14 @@ const DollarInput = ({
   const [value, setValue] = useState("");
 
   useEffect(() => {
+    console.log({ currentValue });
+    console.log(
+      "Formatted Value: ",
+      new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+      }).format(parseFloat(currentValue))
+    );
     setValue(
       new Intl.NumberFormat("en-US", {
         style: "currency",
