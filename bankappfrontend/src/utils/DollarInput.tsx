@@ -25,14 +25,6 @@ const DollarInput = ({
   const [value, setValue] = useState("");
 
   useEffect(() => {
-    console.log({ currentValue });
-    console.log(
-      "Formatted Value: ",
-      new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(parseFloat(currentValue))
-    );
     setValue(
       new Intl.NumberFormat("en-US", {
         style: "currency",
