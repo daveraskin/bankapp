@@ -28,7 +28,7 @@ const AccountListItem = ({
           isDisabled && styles.disabled
         }`}
       >
-        <div>
+        <div className={styles.accountNameText}>
           {makeAccountNumberPrivate(accountData.account_number, true)} *{" "}
           {accountData.name}
         </div>

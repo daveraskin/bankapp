@@ -4,7 +4,6 @@ import styles from "./AccountsTab.module.css";
 import AccountsTable from "./AccountsTable/AccountsTable";
 import { Col, Row } from "reactstrap";
 import CreateAccountModal from "./CreateAccount/CreateAccountModal";
-import TransferFundsModal from "../TransfersTab/AccountSelectorModal";
 
 export interface Account {
   name: string;

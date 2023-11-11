@@ -1,9 +1,7 @@
 import React from "react";
 import { Account } from "../AccountsTab";
-import { makeAccountNumberPrivate } from "../../TransfersTab/TransferFundsForm";
 import { ListGroup, ListGroupItem } from "reactstrap";
 import styles from "./AccountsTable.module.css";
-import { formatDollarValue } from "../../../utils/HelperFunctions";
 import AccountListItem from "../AccountListItem";
 
 const AccountsTableMobile = ({
@@ -13,10 +11,10 @@ const AccountsTableMobile = ({
 }) => {
   return (
     <React.Fragment>
-      <ListGroup type="unstyled">
+      <ListGroup type="unstyled" className={styles.accountsTableMobile}>
         {accountsData?.map((accountData) => {
           return (
-            <ListGroupItem>
+            <ListGroupItem className={styles.accountListGroupItem}>
               <AccountListItem
                 key={accountData.account_number}
                 accountData={accountData}
