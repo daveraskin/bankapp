@@ -63,3 +63,23 @@
 .disabled {
   color: #bababa;
 }
+
+.accountsTableDesktop {
+  border-radius: 3px;
+}
+
+.accountsTableMobile {
+  margin-bottom: 15px;
+  border-radius: 0;
+  & > .accountListGroupItem {
+    border-top-width: 1px;
+  }
+}
+.accountNumber {
+  cursor: default;
+}
+
+.accountListGroupItem {
+  border: 0;
+  border-top: 1px solid #e6e6e6;
+}

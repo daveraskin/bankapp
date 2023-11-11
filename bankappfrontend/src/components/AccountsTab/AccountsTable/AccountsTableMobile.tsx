@@ -1,7 +1,7 @@
 import React from "react";
 import { Account } from "../AccountsTab";
 import { ListGroup, ListGroupItem } from "reactstrap";
-import styles from "./AccountsTable.module.css";
+import styles from "../AccountsTab.module.css";
 import AccountListItem from "../AccountListItem";
 
 const AccountsTableMobile = ({

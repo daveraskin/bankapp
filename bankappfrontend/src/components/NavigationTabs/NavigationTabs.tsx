@@ -46,13 +46,10 @@ const NavigationTabs = ({
   return (
     <Navbar className={styles.navBar}>
       <div
-        style={{
-          backgroundColor: "white",
-          width: "100%",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "flex-start",
-        }}
+        className={`${styles.togglerContainer} ${
+          !isCollapsed && styles.openTogglerContainer
+        }`}
+        hidden={!isMobile}
       >
         <NavbarToggler
           hidden={!isMobile || !isCollapsed}

@@ -3,7 +3,7 @@ import { Account } from "../AccountsTab";
 import { Table } from "reactstrap";
 import { makeAccountNumberPrivate } from "../../TransfersTab/TransferFundsForm";
 import { formatDollarValue } from "../../../utils/HelperFunctions";
-import styles from "./AccountsTable.module.css";
+import styles from "../AccountsTab.module.css";
 const AccountsTableDesktop = ({
   accountsData,
 }: {

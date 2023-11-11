@@ -11,7 +11,7 @@ const UserInfo = ({ userData }: { userData: User | null }) => {
   };
   return userData ? (
     <React.Fragment>
-      <h2 style={{ paddingBottom: "20px" }}>
+      <h2 style={{ paddingBottom: "10px" }}>
         Happy Banking, {formatName(userData.first_name)}!
       </h2>
     </React.Fragment>

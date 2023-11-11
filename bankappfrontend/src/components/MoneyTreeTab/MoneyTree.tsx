@@ -7,6 +7,7 @@ import AuthContext from "../../context/AuthContext";
 import { API_MONEY_TREE_URL } from "../../constants";
 import { TabName } from "../../pages/Home";
 import AccountSelector from "../TransfersTab/AccountSelector";
+import ErrorNotification from "../../utils/ErrorNotification/ErrorNotification";
 
 interface MoneyTreeFormData {
   account_number: string;
@@ -28,17 +29,19 @@ const MoneyTree = ({
   setCurrentTab: (newCurrentTab: TabName) => void;
 }) => {
   const { postRequest } = useContext(AuthContext);
-  const [selectedAccount, setSelectedAccount] = useState("");
-  const [amount, setAmount] = useState(0);
+  const [selectedAccount, setSelectedAccount] = useState<string>("");
+  const [amount, setAmount] = useState<number>(0);
+  const [error, setError] = useState<Error | null>(null);
 
   const onSubmitMoneyTreeForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setError(null);
     const response = await postRequest(API_MONEY_TREE_URL, {
       account_number: selectedAccount,
       amount: amount,
     });
     if (response instanceof Error) {
-      alert("uh oh baby");
+      setError(response);
     } else if (response.status === 200) {
       setAmount(0);
       setSelectedAccount("");
@@ -49,6 +52,7 @@ const MoneyTree = ({
 
   return (
     <div className={styles.moneyTreeContainer}>
+      {error !== null && <ErrorNotification errorMessage={error.message} />}
       <h3 className={styles.moneyTreeTitle}>The Money Tree</h3>
       <Row>
         <Col lg="4" xs="0"></Col>
