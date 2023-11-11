@@ -113,7 +113,7 @@ const SignUpForm = () => {
               onChange={onChange}
               id="pass1"
               name="pass1"
-              type="text"
+              type="password"
             ></Input>
             {signUpFormData.pass1 !== "" &&
               !validatePassword(signUpFormData.pass1) && (
@@ -131,7 +131,7 @@ const SignUpForm = () => {
               onChange={onChange}
               id="pass2"
               name="pass2"
-              type="text"
+              type="password"
             ></Input>
             {signUpFormData.pass2 !== "" &&
               validatePassword(signUpFormData.pass1) &&
