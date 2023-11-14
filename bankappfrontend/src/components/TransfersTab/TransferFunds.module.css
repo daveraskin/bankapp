@@ -43,3 +43,13 @@
 .disabledAccountListItem {
   cursor: default;
 }
+
+.disabledSelectionDiv {
+  cursor: default;
+  color: #bbbbbb;
+}
+
+.accountsSummaryLink {
+  cursor: pointer;
+  color: #243fa0;
+}

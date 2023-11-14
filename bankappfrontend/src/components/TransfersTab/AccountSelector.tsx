@@ -10,11 +10,13 @@ const AccountSelector = ({
   setSelectedAccount,
   selectedAccount,
   disabledAccount,
+  isDisabled,
 }: {
   accountsData: Account[] | null;
   setSelectedAccount: (selectedAccountNumber: string) => void;
   selectedAccount: string;
   disabledAccount?: string | undefined;
+  isDisabled: boolean;
 }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -26,7 +28,12 @@ const AccountSelector = ({
     toggle();
   };
   const noSelectionListItem = (
-    <div onClick={onClickSelectAccount} className={styles.noSelectionDiv}>
+    <div
+      onClick={isDisabled ? undefined : onClickSelectAccount}
+      className={`${styles.noSelectionDiv} ${
+        isDisabled && styles.disabledSelectionDiv
+      }`}
+    >
       <div>Select Account</div>
       <i className="fa-solid fa-angle-right"></i>
     </div>

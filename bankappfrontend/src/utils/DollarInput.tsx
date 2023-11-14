@@ -17,10 +17,12 @@ const DollarInput = ({
   setCurrentValue,
   currentValue,
   placeholder,
+  isDisabled,
 }: {
   setCurrentValue: (value: number) => void;
   currentValue: number;
   placeholder?: string;
+  isDisabled?: boolean;
 }) => {
   const [value, setValue] = useState("");
 
@@ -71,6 +73,7 @@ const DollarInput = ({
   };
   return (
     <Input
+      disabled={isDisabled}
       value={value}
       placeholder={placeholder}
       onKeyDown={onChangeInputValue}

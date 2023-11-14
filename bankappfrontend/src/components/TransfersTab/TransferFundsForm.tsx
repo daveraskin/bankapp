@@ -5,7 +5,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { Button, Form, FormGroup, Label } from "reactstrap";
+import { Alert, Button, Form, FormGroup, Label } from "reactstrap";
 import { API_TRANSFER_FUNDS_URL } from "../../constants";
 import styles from "./TransferFunds.module.css";
 import AuthContext from "../../context/AuthContext";
@@ -63,6 +63,8 @@ const TransferFundsForm = ({
   const [transferTo, setTransferTo] = useState<string>("");
   const [transferAmount, setTransferAmount] = useState<number>(0);
 
+  const hasTooFewAccounts = accountsData === null || accountsData.length < 2;
+
   const [isTransferFormDisabled, setIsTransferFormDisabled] =
     useState<boolean>(true);
   const [shouldDisplayOverdrawnMessage, setShouldDisplayOverdrawnMessage] =
@@ -111,11 +113,34 @@ const TransferFundsForm = ({
 
   return (
     <Fragment>
+      <Alert
+        color="secondary"
+        className={styles.tooFewAccountsMessage}
+        hidden={!hasTooFewAccounts}
+      >
+        You cannot make transfers with fewer than two active accounts. Create
+        new accounts on the{" "}
+        <span
+          className={styles.accountsSummaryLink}
+          onClick={() => setCurrentTab(TabName.ACCOUNTS_SUMMARY)}
+        >
+          Accounts Summary
+        </span>{" "}
+        page and add funds to those accounts at the{" "}
+        <span
+          className={styles.accountsSummaryLink}
+          onClick={() => setCurrentTab(TabName.MONEY_TREE)}
+        >
+          Money Tree
+        </span>
+        .
+      </Alert>
       <Form onSubmit={onSubmitTransferForm}>
         <FormGroup className={styles.leftAlignFormGroup}>
           <Label className={styles.transferFundsFormLabel}>From Account</Label>
           <AccountSelector
             accountsData={accountsData}
+            isDisabled={hasTooFewAccounts}
             selectedAccount={transferFrom}
             setSelectedAccount={(selectedAccount: string) =>
               setTransferFrom(selectedAccount)
@@ -127,6 +152,7 @@ const TransferFundsForm = ({
           <Label className={styles.transferFundsFormLabel}>To Account</Label>
           <AccountSelector
             accountsData={accountsData}
+            isDisabled={hasTooFewAccounts}
             selectedAccount={transferTo}
             setSelectedAccount={(selectedAccount: string) =>
               setTransferTo(selectedAccount)
@@ -139,6 +165,7 @@ const TransferFundsForm = ({
             Transfer Amount
           </Label>
           <DollarInput
+            isDisabled={hasTooFewAccounts}
             currentValue={transferAmount}
             setCurrentValue={setTransferAmount}
             placeholder="$100.00"

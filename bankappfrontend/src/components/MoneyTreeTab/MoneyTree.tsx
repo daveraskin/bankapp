@@ -1,7 +1,7 @@
 import React, { FormEvent, useContext, useState } from "react";
 import { Account } from "../AccountsTab/AccountsTab";
 import styles from "./MoneyTree.module.css";
-import { Button, Col, Form, FormGroup, Label, Row } from "reactstrap";
+import { Alert, Button, Col, Form, FormGroup, Label, Row } from "reactstrap";
 import DollarInput from "../../utils/DollarInput";
 import AuthContext from "../../context/AuthContext";
 import { API_MONEY_TREE_URL } from "../../constants";
@@ -33,6 +33,8 @@ const MoneyTree = ({
   const [amount, setAmount] = useState<number>(0);
   const [error, setError] = useState<Error | null>(null);
 
+  const hasTooFewAccounts = accountsData === null || accountsData.length < 1;
+
   const onSubmitMoneyTreeForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError(null);
@@ -57,10 +59,21 @@ const MoneyTree = ({
       <Row>
         <Col lg="4" xs="0"></Col>
         <Col lg="4" xs="12">
+          <Alert hidden={!hasTooFewAccounts} color="secondary">
+            You have no accounts to add funds to. Create one on the{" "}
+            <span
+              className={styles.accountsSummaryLink}
+              onClick={() => setCurrentTab(TabName.ACCOUNTS_SUMMARY)}
+            >
+              Accounts Summary
+            </span>{" "}
+            page
+          </Alert>
           <Form onSubmit={onSubmitMoneyTreeForm}>
             <FormGroup className={styles.leftAlignFormGroup}>
               <Label className={styles.moneyTreeFormLabel}>To Account</Label>
               <AccountSelector
+                isDisabled={hasTooFewAccounts}
                 accountsData={accountsData}
                 setSelectedAccount={setSelectedAccount}
                 selectedAccount={selectedAccount}

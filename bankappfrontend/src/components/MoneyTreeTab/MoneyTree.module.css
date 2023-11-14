@@ -13,6 +13,11 @@
   align-items: flex-start;
 }
 
+.accountsSummaryLink {
+  cursor: pointer;
+  color: #243fa0;
+}
+
 .moneyTreeFormLabel {
   font-weight: 600;
 }

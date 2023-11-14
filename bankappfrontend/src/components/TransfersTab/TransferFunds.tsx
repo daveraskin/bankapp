@@ -4,6 +4,7 @@ import styles from "./TransferFunds.module.css";
 import TransferFundsForm from "./TransferFundsForm";
 import { Col, Row } from "reactstrap";
 import { TabName } from "../../pages/Home";
+import ErrorNotification from "../../utils/ErrorNotification/ErrorNotification";
 
 const TransferFunds = ({
   accountsData,
